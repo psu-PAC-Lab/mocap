@@ -15,8 +15,8 @@
   <depend>rclpy</depend>
   <depend>nav_msgs</depend>
   <depend>geometry_msgs</depend>
-  <depend>mocap4r2_msgs</depend>
-  <depend>numpy-quaternion</depend>
+  <depend>mocap_msgs</depend>
+  <depend>python-numpy-quaternion-pip</depend>
 
   <export>
     <build_type>ament_python</build_type>
