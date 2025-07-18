@@ -6,4 +6,4 @@
       z: 0.0
     robot_name: '0' # string associated with robot in mocap data
     filter_time_const: 0.01 # [sec]
-    mocap_freq: 120.0 # [Hz]
+    mocap_freq: 100.0 # [Hz]

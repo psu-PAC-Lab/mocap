@@ -6,7 +6,7 @@ from rclpy.node import Node
 
 import nav_msgs.msg
 import geometry_msgs.msg
-import mocap4r2_msgs.msg
+import mocap_msgs.msg
 
 def qdot_2_pqr(q, q_dot):
     q_omega = 2*q.inverse()*q_dot
@@ -19,7 +19,7 @@ class Mocap(Node):
         super().__init__('mocap')
 
         # subscribers
-        self.rigid_body_sub = self.create_subscription(mocap4r2_msgs.msg.RigidBodies, '/rigid_bodies', self.rigid_bodies_callback, 10)
+        self.rigid_body_sub = self.create_subscription(mocap_msgs.msg.RigidBodies, '/rigid_bodies', self.rigid_bodies_callback, 10)
 
         # publishers
         self.odom_pub = self.create_publisher(nav_msgs.msg.Odometry, '/nav/odom', 10)
