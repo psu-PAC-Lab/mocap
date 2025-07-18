@@ -1,0 +1,9 @@
+/mocap:
+  ros__parameters:
+    dpos_mocap2map: # in map frame
+      x: 0.4 
+      y: 0.4
+      z: 0.0
+    robot_name: '0' # string associated with robot in mocap data
+    filter_time_const: 0.01 # [sec]
+    mocap_freq: 120.0 # [Hz]
