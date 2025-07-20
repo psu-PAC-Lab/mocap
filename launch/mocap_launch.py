@@ -16,6 +16,7 @@ def generate_launch_description():
             package='mocap',
             executable='mocap',
             name='mocap',
+            namespace='mocap',
             output='screen',
             parameters=[config]
         )

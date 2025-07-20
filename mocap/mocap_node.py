@@ -18,12 +18,6 @@ class Mocap(Node):
     def __init__(self):
         super().__init__('mocap')
 
-        # subscribers
-        self.rigid_body_sub = self.create_subscription(mocap_msgs.msg.RigidBodies, '/rigid_bodies', self.rigid_bodies_callback, 10)
-
-        # publishers
-        self.odom_pub = self.create_publisher(nav_msgs.msg.Odometry, '/nav/odom', 10)
-
         # parameters
         self.declare_parameter('dpos_mocap2map.x', 0.0)
         self.declare_parameter('dpos_mocap2map.y', 0.0)
@@ -31,6 +25,7 @@ class Mocap(Node):
         self.declare_parameter('robot_name', '0')
         self.declare_parameter('filter_time_const', 0.0)
         self.declare_parameter('mocap_freq', 100.0)
+        self.declare_parameter('odom_msg_name', 'odom')
 
         dx = self.get_parameter('dpos_mocap2map.x').get_parameter_value().double_value
         dy = self.get_parameter('dpos_mocap2map.y').get_parameter_value().double_value
@@ -38,9 +33,16 @@ class Mocap(Node):
         self.dr_mocap2map = np.array([dx, dy, dz])
 
         self.robot_name = self.get_parameter('robot_name').get_parameter_value().string_value
+        mocap_msg_name = self.get_parameter('odom_msg_name').get_parameter_value().string_value
 
         self.tau_f = self.get_parameter('filter_time_const').get_parameter_value().double_value
         self.dt = 1.0 / self.get_parameter('mocap_freq').get_parameter_value().double_value
+
+        # subscribers
+        self.rigid_body_sub = self.create_subscription(mocap_msgs.msg.RigidBodies, '/rigid_bodies', self.rigid_bodies_callback, 10)
+
+        # publishers
+        self.odom_pub = self.create_publisher(nav_msgs.msg.Odometry, mocap_msg_name, 10)
 
         # raw position and quaternion
         self.r_k = None

@@ -7,3 +7,4 @@
     robot_name: '0' # string associated with robot in mocap data
     filter_time_const: 0.01 # [sec]
     mocap_freq: 100.0 # [Hz]
+    odom_msg_name: 'odom' # name of the odometry message to publish
