@@ -1,4 +1,4 @@
-/mocap:
+/mocap/mocap:
   ros__parameters:
     dpos_mocap2map: # in map frame
       x: 0.4 
