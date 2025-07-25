@@ -1,5 +1,6 @@
 /mocap/mocap:
   ros__parameters:
+    use_sim_time: true
     dpos_mocap2map: # in map frame
       x: 0.4 
       y: 0.4
