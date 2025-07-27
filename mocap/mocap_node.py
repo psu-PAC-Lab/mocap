@@ -100,7 +100,7 @@ class Mocap(Node):
 
                 # publish odom message
                 odom_msg = nav_msgs.msg.Odometry()
-                odom_msg.header.stamp = self.get_clock.now()
+                odom_msg.header.stamp = self.get_clock().now().to_msg()
                 odom_msg.header.frame_id = 'map'
                 odom_msg.child_frame_id = 'base_link'
                 odom_msg.pose.pose = pose
